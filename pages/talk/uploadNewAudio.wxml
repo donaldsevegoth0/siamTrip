@@ -1,0 +1,29 @@
+<!--pages/talk/uploadNewAudio.wxml-->
+<view class="custom-nav">
+<view class="back">
+  <image src="/UI/navBar/Vector.png" alt="back" class="back-icon" bindtap="goBack"/>
+</view>
+
+  <view class="nav-title">
+    <text>{{title}}</text>
+  </view>
+</view>
+<view class="container">
+  <view class="title">
+        <text>Upload</text>
+      </view>
+    <form bindsubmit="submit">
+      <view class="form-item">
+      <view class="audioInfo">
+        <text class="label">Text:</text>
+        <input type="text" placeholder="New Audio Text "/>
+      </view>
+      <view class="audioInfo">
+        <text class="label">URL:</text>
+        <input type="text" placeholder="New Audio URL "/>
+      </view>
+      </view>
+      <button form-type="submit">Submit</button>
+    </form>
+</view>
+<custom-tab-bar></custom-tab-bar>

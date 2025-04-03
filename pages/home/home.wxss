@@ -1,0 +1,104 @@
+/**index.wxss**/
+.page{
+  background-color: #F9F2EF;
+  height: 100vh;
+}
+
+.separator {
+  border-top: 2px solid black;  /* 上边框作为分隔线 */
+  margin: 20rpx 0;  /* 上下间距 */
+}
+
+.welcome {
+  display: flex;
+  align-items: center; /* Vertically center */
+  justify-content: space-between; /* Push text left, image right */
+  padding: 0 5vw;
+}
+
+.text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.logo image {
+  width: 20vw; /* Adjust as needed */
+  height: 10vh;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 20px;
+  padding: 5px 10px;
+  width: 90%;
+  margin: 10px auto;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 8px;
+  font-size: 16px;
+
+}
+
+.search-button {
+  height: 5vh;  /* Keep width and height equal for a perfect circle */
+  border: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 5vw;
+  
+}
+
+.search-icon{
+  background-color: blueviolet;
+  width:10vw;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  
+}
+
+.search-button image{
+  width: 4vw;
+  height: 2vh;
+}
+
+.functions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7vh 7vw;
+}
+
+.functions button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F9F2EF;
+}
+
+.assist image, .post image{
+  width:40vw;
+  height:20vh;
+}
+
+.rec-text{
+  font-weight: bolder;
+  font-size: 6vw;
+  margin: 0vh 5vw;
+}
+
+.recommendation view{
+  margin: 10vh 5vw;
+  font-size: 10vw;
+  color: green
+}

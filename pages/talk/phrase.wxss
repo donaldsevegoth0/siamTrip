@@ -1,0 +1,128 @@
+/* pages/talk/phrase.wxss */
+.custom-nav {
+  display: flex;
+  align-items: center;
+  margin-top: 6vh;
+}
+
+.back {
+  display: flex;
+  justify-content: center;    /* 水平居中图片 */
+  align-items: center;        /* 垂直居中图片 */
+  margin-left: 5vw;        /* 给图片和标题之间增加一点间距 */
+}
+
+.back-icon {
+  width: 3vw;               /* 设置图片小一点 */
+  height: 2vh;              /* 设置图片小一点 */
+  object-fit: contain;        /* 保持图片比例 */
+}
+
+.nav-title {
+  flex-grow: 1;
+  text-align: center;
+  color: black;
+  font-size: 36rpx;  /* 增大标题字体 */
+  font-weight: bolder;  /* 设置标题为粗体 */
+  text-transform: capitalize;
+  margin-right: 6vw;
+}
+
+/* 喇叭图标样式 */
+.audio-icon {
+  width: 10vw;
+  height: 5vh;
+  cursor: pointer; /* 鼠标悬停时显示手型 */
+}
+
+.phrase{
+  width: 80vw;
+  background-color: #9FEABA;
+  display: flexbox;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10vw;
+  margin-top: 5vh;
+  border-radius: 19px;
+  box-shadow: 10rpx 10rpx 10rpx rgba(167, 157, 157, 0.7);
+  padding-top: 9vh;
+}
+
+.meaning{
+  font-size: 10vw;
+  text-align: center;
+}
+
+.container{
+  display: flexbox;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
+}
+
+.thai{
+  font-size: 6vw;
+  margin-left: 10vw;
+}
+/*Choice*/
+.choice{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:10vw;
+}
+
+.yes, .no {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageYes {
+  width: 27vw;  /* Adjust as needed */
+  height: 17vh; /* Maintain aspect ratio */
+}
+
+.imageNo {
+  width: 25vw;  /* Adjust as needed */
+  height: 20vh; /* Maintain aspect ratio */
+}
+
+
+/*Calculator*/
+.calculator {
+  width:80vw;
+  margin-left: 10vw ;
+}
+
+.screen {
+  width: 80%;
+  height: 5vh;
+  font-size: 24px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 19px;
+  background: #f8f8f8;
+  margin: 5vw 9vw;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+button {
+  width: 6vw;
+  height: 10vw;
+  font-size: 5vw;
+  margin: 1vw;
+  border-radius: 5px;
+  background: #eee;
+  border: none;
+}
+
+button:active {
+  background: #ddd;
+}
+

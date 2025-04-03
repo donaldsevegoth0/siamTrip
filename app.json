@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/post/post",
+    "pages/add/add",
+    "pages/talk/talk",
+    "pages/me/me",
+    "pages/talk/phrases",
+    "pages/talk/phrase",
+    "pages/talk/uploadNewAudio",
+    "pages/login/login"
+  ],
+  "tabBar": {
+    "custom": true,
+    "list": [
+      { "pagePath": "pages/home/home", "text": "home" },
+      { "pagePath": "pages/post/post", "text": "post" }
+      ,
+      { "pagePath": "pages/add/add", "text": "&#x002B", "iconPath": "/UI/tabbar/Group 1.jpg" }
+      ,
+      { "pagePath": "pages/talk/talk", "text": "talk" }
+      ,
+      { "pagePath": "pages/me/me", "text": "me" }
+    ]
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff", 
+    "navigationBarTextStyle": "black", 
+    "navigationBarTitleText": "Siam Trip",
+    "backgroundColor": "#f60"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

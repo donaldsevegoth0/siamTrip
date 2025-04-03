@@ -1,0 +1,21 @@
+<!--pages/phrases/phrases.wxml-->
+<view class="custom-nav">
+  <view class="nav-title">
+    <text>{{title}}</text>
+  </view>
+</view>
+
+<view>
+<view class="phrases-container">
+  <!-- 遍历phrases数组，显示每个短语的content -->
+  <view class="phrase" wx:for="{{phrases}}" wx:key="unique" bindtap="seeDetail" data-id="{{item._id}}" data-title="{{item.English}}">
+    <text>{{item.English}}</text>
+  </view>
+  <view class="addPhrase" bindtap="goToSubmit">
+    <image src="/UI/addPhrase/Group 1.png" alt="add" class="add-icon"/>
+  </view>
+</view>
+
+
+</view>
+<custom-tab-bar></custom-tab-bar>

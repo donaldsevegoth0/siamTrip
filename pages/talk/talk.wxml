@@ -1,0 +1,39 @@
+<!--pages/talk/talk.wxml-->
+<view class="talk">
+  <view class="separator"></view>
+<view class="title">
+  <text>{{title_text}}</text>
+</view>
+<view class="assist">
+  <view class="separator"></view>
+  <view class="types">
+  <view wx:for="{{items}}" wx:key="index" class="type" bindtap="phrasesShow" 
+      data-item="{{item.name}}">
+    <view class="iconUpOnFont">
+      <view class="circle">
+        <image src="{{item.pic}}" alt="{{item.name}}" class="item-image" />
+      </view>
+      <text style="margin-top: 20rpx; text-shadow:5rpx 5rpx 5rpx grey;">{{item.name}}</text>
+    </view>
+  </view>
+  </view>
+  <view class="separator"></view>
+  <view style="text-align: center;">
+  <h1 style="font-weight: bolder; font-size: larger;">GENERAL PHRASE</h1>
+  </view>
+  <view class="generals">
+    <view wx:for="{{generals}}" wx:key="index" class="general">
+    <view>
+      <text style="text-transform:capitalize;" bindtap="seeDetail" 
+      data-id="{{item._id}}" data-title="{{item.English}}">{{item.English}}</text>
+    </view>
+    </view>
+  </view>
+  <view style="display: flex; justify-content: center;">
+    <view class="sosCircle" bindtap="call191">
+      <text class="sosText">SOS</text>
+      <text class="sosText">191</text>
+    </view>
+  </view>
+</view>
+</view>

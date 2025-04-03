@@ -1,0 +1,4 @@
+<!--pages/post/post.wxml-->
+<view class="container">
+<text>Post Area is under construction !</text>
+</view>

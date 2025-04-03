@@ -1,0 +1,102 @@
+/* pages/talk/talk.wxss */
+.talk{
+  background-color: #F9F2EF;
+}
+
+.title{
+  text-align: center;
+  padding: 3vh 0vh;
+}
+
+
+
+.separator {
+  border-top: 2px solid black;  /* 上边框作为分隔线 */
+  margin: 20rpx 0;  /* 上下间距 */
+}
+
+.assist{
+  padding-bottom:10vh;
+}
+
+/*Activity Types*/
+.types {
+  display: flex;           /* 启用 flex 布局 */
+  flex-wrap: wrap;         /* 启用换行 */
+  justify-content: space-between; /* 子项之间有间隔 */
+}
+
+.type {
+  width: 30%;              /* 每个元素占 30% 宽度，保证一行显示 3 个元素 */
+  color: black;
+  text-align: center;
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+  font-size: 20rpx;
+  text-transform: capitalize;
+}
+
+.circle{
+  width: 100rpx;                /* 设置圆形宽度 */
+  height: 100rpx;               /* 设置圆形高度 */
+  border:solid 1px #f60;       /* 圆形背景颜色 */
+  border-radius: 50%;           /* 圆角设置为50%，形成圆形 */
+  display: flex;                /* 使用 flex 布局使 icon 居中 */
+  justify-content: center;      /* 水平居中 */
+  align-items: center;          /* 垂直居中 */
+  box-shadow: inset 4rpx 4rpx 4rpx rgba(167, 157, 157, 0.7);
+  background-color: white;
+}
+
+.item-image{
+  width: 80%;      /* 或者你可以根据需要设置固定宽度 */
+  height: 80%;    /* 根据需要调整高度 */
+  object-fit: cover; /* 保证图片按比例缩放，保持图片内容完整 */
+}
+
+.iconUpOnFont{
+  display: flex;                /* 使用 flex 布局 */
+  flex-direction: column;       /* 垂直排列，circle 会在 name 的上面 */
+  align-items: center;          /* 水平居中 */
+  justify-content: center;
+}
+
+/*General phrases*/
+.generals{
+  display: flex;           /* 启用 flex 布局 */
+  flex-wrap: wrap;         /* 启用换行 */
+  justify-content: space-between; /* 子项之间有间隔 */
+}
+
+.general{
+  height: 75rpx;
+  width: 35%;              /* 每个元素占 30% 宽度，保证一行显示 3 个元素 */
+  color: black;
+  text-align: center;
+  margin: 50rpx 50rpx;
+  font-size: 35rpx;
+  background-color: #9FEABA;
+  border-radius: 50rpx;
+  padding-top: 25rpx;
+  box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.3),  /* Inner shadow (upwards) */
+  0 5px 5px rgba(0, 0, 0, 0.3);
+  overflow: auto;
+}
+
+/*sos circle*/
+.sosCircle{
+  color: blue;
+  width: 100rpx;                /* 设置圆形宽度 */
+  height: 100rpx;               /* 设置圆形高度 */
+  border-radius: 50%;           /* 圆角设置为50%，形成圆形 */
+  display: flex;                
+  justify-content: center;      
+  align-items: center;             
+  flex-direction: column;  
+  background-color: red;
+}
+
+.sosText{
+  font-size: 16px;
+  color: #333;
+}

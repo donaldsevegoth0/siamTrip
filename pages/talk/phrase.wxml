@@ -1,0 +1,59 @@
+<!--pages/talk/phrase.wxml-->
+<scroll-view scroll-y="">
+<view class="phrase">
+  <view class="meaning">{{phrase.English}}</view>
+  <view class="container">
+    <view class="audio-container">
+    <!-- 喇叭按钮，使用 img 标签 -->
+    <image class="audio-icon" src="/UI/phrasePlayer/image 15.png" bindtap="playAudio" data-audio="{{phrase.audio_url}}"></image>
+    </view>
+    <view class="thai">{{phrase.thai}}</view>
+  </view>
+</view>
+<view wx:if="{{isQuestion==true || isCalculator == true}}">
+    <view wx:if="{{isQuestion == true}}">
+      <view class="choice">
+        <view class="yes" wx:if="{{yesActive==true}}" bindtap="yesClick">
+          <image src="/UI/question/yes.png" alt="yes" class="imageYes"/>
+        </view>
+        <view class="no" wx:if="{{noActive==true}}" bindtap="noClick">
+          <image src="/UI/question/no.png" alt="no" class="imageNo"/>
+        </view>
+      </view>
+    </view>
+    <view wx:elif="{{isCalculator==true}}">
+      <view class="calculator">
+  <input type="text" class="screen" value="{{display}}" disabled />
+
+  <view class="row">
+    <button bindtap="clear">C</button>
+    <button bindtap="inputValue" data-value=".">.</button>
+  </view>
+  <view class="row">
+    <button bindtap="inputValue" data-value="7">7</button>
+    <button bindtap="inputValue" data-value="8">8</button>
+    <button bindtap="inputValue" data-value="9">9</button>
+  </view>
+
+  <view class="row">
+    <button bindtap="inputValue" data-value="4">4</button>
+    <button bindtap="inputValue" data-value="5">5</button>
+    <button bindtap="inputValue" data-value="6">6</button>
+  </view>
+
+  <view class="row">
+    <button bindtap="inputValue" data-value="1">1</button>
+    <button bindtap="inputValue" data-value="2">2</button>
+    <button bindtap="inputValue" data-value="3">3</button>
+  </view>
+
+  <view class="row">
+    <button bindtap="inputValue" data-value="0">0</button>
+    <button bindtap="inputValue" data-value=".">.</button>
+  </view>
+</view>
+
+    </view>
+</view>
+</scroll-view>
+<custom-tab-bar></custom-tab-bar>

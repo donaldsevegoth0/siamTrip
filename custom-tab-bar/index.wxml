@@ -1,0 +1,20 @@
+<view class="tab-bar">
+  <block wx:for="{{list}}" wx:key="index">
+    <!-- 普通 tab -->
+    <view 
+      wx:if="{{item.text != '+'}}" 
+      class="tab-item {{selected === index ? 'active' : ''}}" 
+      data-index="{{index}}" 
+      bindtap="switchTab"
+    >
+      <view>{{item.text}}</view>
+    </view>
+
+    <!-- 加号按钮 -->
+    <view wx:else class="tab-item add-button" data-index="{{index}}" 
+      bindtap="switchTab">
+      <image src="/UI/tabbar/Group 1.jpg" class="add-icon"></image>
+    </view>
+  </block>
+</view>
+

@@ -1,0 +1,4 @@
+<!--pages/me/me.wxml-->
+<view class="container">
+<text>Profile Area is under construction !</text>
+</view>

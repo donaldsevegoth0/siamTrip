@@ -1,0 +1,35 @@
+<!--pages/index/index.wxml-->
+<view class="page">
+<view class="separator"></view>
+<view class="title">
+<view class="welcome">
+<view>
+  <view class="text">Welcome to</view>
+  <view class="text">Thailand!</view>
+</view>
+  <view class="logo">
+    <image src="/UI/home/logo.png"/>
+  </view>
+</view>
+</view>
+<view class="search-bar">
+  <input class="search-input" placeholder="Search..." bindinput="onInput"/>
+  <button class="search-button" bindtap="onSearch">
+  <view class="search-icon">
+    <image src="/UI/home/search.png"/>
+  </view>
+  </button>
+</view>
+
+<view class="functions">
+<button bindtap="goAssist">
+<view class="assist"><image src="/UI/home/assist.png" /></view></button>
+<button bindtap="goPost">
+<view class="post"><image src="/UI/home/post.png" /></view></button>
+</view>
+
+<view class="recommendation">
+<text class="rec-text">Recommendation</text>
+<view>This Area is under construction!</view>
+</view>
+</view>

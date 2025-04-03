@@ -1,0 +1,6 @@
+/* pages/me/me.wxss */
+.container{
+  margin: 10vh 5vw;
+  font-size: 10vw;
+  color: green
+}

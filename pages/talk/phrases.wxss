@@ -1,0 +1,58 @@
+/* pages/phrases/phrases.wxss */
+.custom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6vh;
+}
+
+
+.nav-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 36rpx;  /* 增大标题字体 */
+  font-weight: bolder;  /* 设置标题为粗体 */
+  text-transform: capitalize;
+}
+
+
+
+/* phrases.wxss */
+.phrases-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.phrase {
+  padding: 5vw;
+  display: flex;
+  margin: 5vw 5vh; /* 每个短语之间的间距 */
+  font-size: 6vw; /* 设置字体大小 */
+  background-color: #9FEABA;
+  border-radius: 19px;
+  height:10vh;
+  width: 80vw;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 8rpx 8rpx 8rpx rgba(167, 157, 157, 0.7);
+}
+
+.addPhrase{
+  display: flex;
+  justify-content: center;    /* 水平居中图片 */
+  align-items: center;        /* 垂直居中图片 */
+  margin-left: 70vw;        /* 给图片和标题之间增加一点间距 */
+  margin-top: 77vh;
+  position: fixed;
+}
+
+.add-icon{
+  width: 10vw;               /* 设置图片小一点 */
+  height: 5vh;              /* 设置图片小一点 */
+  object-fit: contain;        /* 保持图片比例 */
+}
