@@ -12,10 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const token = wx.getStorageSync('token');
-    if (!token) {
-      wx.reLaunch({ url: '/pages/login/login' });
-    }
+    
   },
 
   /**

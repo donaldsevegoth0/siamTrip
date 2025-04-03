@@ -7,8 +7,7 @@
     "pages/me/me",
     "pages/talk/phrases",
     "pages/talk/phrase",
-    "pages/talk/uploadNewAudio",
-    "pages/login/login"
+    "pages/talk/uploadNewAudio"
   ],
   "tabBar": {
     "custom": true,
