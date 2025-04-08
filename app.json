@@ -2,12 +2,14 @@
   "pages": [
     "pages/home/home",
     "pages/post/post",
+    "pages/post/postDetail",
     "pages/add/add",
     "pages/talk/talk",
     "pages/me/me",
     "pages/talk/phrases",
     "pages/talk/phrase",
-    "pages/talk/uploadNewAudio"
+    "pages/talk/uploadNewAudio",
+    "pages/login/login"
   ],
   "tabBar": {
     "custom": true,
@@ -33,3 +35,5 @@
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
 }
+
+

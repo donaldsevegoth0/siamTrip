@@ -1,6 +1,96 @@
-/* pages/add/add.wxss */
-.container{
-  margin: 10vh 5vw;
-  font-size: 10vw;
-  color: green
+.container {
+  padding: 10vh;
+  background-color: #f5f6fa;
+  box-sizing: border-box;
 }
+
+.card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+  width: 80vw;
+}
+
+.form-item {
+  margin-bottom: 20px;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.input,
+.textarea,
+.picker {
+  width:35vh;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 15px;
+  background-color: #fafafa;
+}
+
+.textarea {
+  height: 100px;
+  resize: none;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.image-box {
+  position: relative;
+}
+
+.preview-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.upload-btn {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #e4e6eb;
+  font-size: 32px;
+  color: #777;
+  text-align: center;
+  line-height: 100px;
+}
+
+.delete-icon {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff4d4f;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.submit-btn {
+  background-color: #4A90E2;
+  color: #fff;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 16px;
+  margin-top: 24px;
+}
+

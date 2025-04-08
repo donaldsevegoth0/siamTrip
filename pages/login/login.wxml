@@ -1,4 +1,5 @@
 <view class="container">
-  <button bindtap="onLogin">微信一键登录</button>
+  <image class="logo" src="/UI/home/logo.png" mode="aspectFit" />
+  <view class="title">Welcome</view>
+  <button class="login-btn" type="primary" bindtap="handleLogin">Login By Wechat</button>
 </view>
-

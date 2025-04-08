@@ -30,6 +30,27 @@
 
 <view class="recommendation">
 <text class="rec-text">Recommendation</text>
-<view>This Area is under construction!</view>
 </view>
+<view class="post-grid">
+    <block wx:for="{{posts}}" wx:key="_id">
+      <view class="post-card" bindtap="goToDetail" data-id="{{item._id}}">
+        <image class="post-img" src="{{item.images[0]}}" mode="aspectFill" />
+
+        <view class="post-info">
+          <view class="post-title">{{item.title}}</view>
+          <!-- 用户头像 + 名称：中间 -->
+          <view class="post-user">
+            <image class="user-avatar" src="{{item.avatar}}" />
+            <text class="user-name">{{item.username}}</text>
+          </view>
+          <view class="post-bottom">
+            <!-- 地理位置：左下 -->
+            <view class="post-meta-left">📍{{item.location}}</view>
+            <!-- 点赞数：右下 -->
+            <view class="post-meta-right">❤️ {{item.likes}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
 </view>

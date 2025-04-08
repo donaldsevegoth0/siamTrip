@@ -1,4 +1,31 @@
-<!--pages/me/me.wxml-->
 <view class="container">
-<text>Profile Area is under construction !</text>
+  <!-- 用户头像和名字 -->
+  <view class="avatar-container">
+    <image class="avatar" src="{{avatar}}" mode="aspectFill" />
+    <view class="username">{{name}}</view>
+  </view>
+
+  <!-- block部分 -->
+  <view class="posts-block">
+    <view class="posts-header">
+      <text class="header-item active">MY POSTS</text>
+    </view>
+
+    <!-- 卡片部分 -->
+    <view class="cards-container">
+      <view class="card">
+        <view class="card-content">Card 1</view>
+      </view>
+      <view class="card">
+        <view class="card-content">Card 2</view>
+      </view>
+      <view class="card">
+        <view class="card-content">Card 3</view>
+      </view>
+      <view class="card">
+        <view class="card-content">Card 4</view>
+      </view>
+    </view>
+  </view>
 </view>
+

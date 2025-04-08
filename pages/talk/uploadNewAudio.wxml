@@ -10,20 +10,44 @@
 </view>
 <view class="container">
   <view class="title">
-        <text>Upload</text>
-      </view>
-    <form bindsubmit="submit">
-      <view class="form-item">
+    <text>Upload</text>
+  </view>
+  <form bindsubmit="submit">
+    <view class="form-item">
+      <!-- Category Selection -->
       <view class="audioInfo">
-        <text class="label">Text:</text>
-        <input type="text" placeholder="New Audio Text "/>
+        <text class="label">Category:</text>
+        <picker mode="selector" range="{{categories}}" bindchange="onCategoryChange" class="custom-picker">
+          <view class="picker-value">
+            {{selectedCategory ? selectedCategory : "Select Category"}}
+          </view>
+        </picker>
       </view>
+
+      <!-- Chinese Text Input -->
       <view class="audioInfo">
-        <text class="label">URL:</text>
-        <input type="text" placeholder="New Audio URL "/>
+        <text class="label">Chinese:</text>
+        <input name="chinese" type="text" placeholder="Enter Chinese text" bindinput="onChineseChange"/>
       </view>
+
+      <!-- Type Selection (Checkbox) -->
+      <view class="audioInfo">
+  <text class="label">Type:</text>
+  <checkbox-group bindchange="onTypeChange">
+    <view wx:for="{{types}}" wx:key="index">
+      <label class="checkbox-label">
+        <checkbox value="{{item}}"/> {{item}}
+      </label>
+    </view>
+  </checkbox-group>
       </view>
-      <button form-type="submit">Submit</button>
-    </form>
+
+
+
+    </view>
+    <button form-type="submit">Submit</button>
+  </form>
 </view>
+
+
 <custom-tab-bar></custom-tab-bar>

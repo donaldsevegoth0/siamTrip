@@ -1,6 +1,179 @@
 /* pages/post/post.wxss */
-.container{
-  margin: 10vh 5vw;
-  font-size: 10vw;
-  color: green
+/* Navigation bar 样式 */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #271A1A;
+  padding: 10rpx 16rpx;
+  position: relative;
+  transition: opacity 0.3s ease;  /* 控制导航栏的透明度 */
+}
+
+.category {
+  display: flex;
+  flex: 1; /* 让分类项占满剩余空间 */
+  justify-content: space-between; /* 分类项均匀分布 */
+}
+
+.nav-item {
+  color: #fff;
+  font-size: 28rpx;
+  cursor: pointer;
+  padding: 0 16rpx; /* 添加内边距，保持每个分类之间的间隔 */
+}
+
+.nav-item:hover {
+  color: #f44336; /* 鼠标悬浮时变红 */
+}
+
+/* 搜索按钮样式 */
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 16rpx; /* 让搜索按钮有适当的间距 */
+}
+
+/* 搜索框样式 */
+.search-bar {
+  position: absolute;
+  top: 0;
+ 
+  width: 96%; /* 宽度和导航栏一样 */
+  height: 2.5%; /* 高度与导航栏一样 */
+  background-color: #fff;
+  padding: 0 16rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background-color: #271A1A;  /* 和 nav-bar 一致的深色背景 */
+  color: #fff;                /* 确保文字输入也能看清 *//* 必须确保是完全不透明 */
+  transform: translateX(100%);  /* 初始状态：在屏幕外右侧 */
+  transition: transform 0.3s ease;
+
+}
+
+.search-bar.show {
+  transform: translateX(0);  /* 显示时：滑动进来 */
+}
+.search-bar.slidingOut {
+  transform: translateX(100%);
+}
+
+.search-input {
+  width: 80%;
+  padding: 9rpx 0;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 24rpx;
+  background-color: transparent;
+  color: #fff; /* 配合深色背景的文字颜色 */
+}
+
+
+.close-btn {
+  font-size: 28rpx;
+  color: #999;
+  cursor: pointer;
+}
+.nav-bar.hidden {
+  opacity: 0; /* 使导航栏透明消失 */
+  pointer-events: none; /* 防止导航栏的点击事件 */
+}
+.search-bar.show {
+  right: 0;
+}
+
+
+/* Post card 样式 */
+.post-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 16rpx;
+}
+
+.post-card {
+  width: 48%;
+  background-color: #271A1A;
+  color: #fff;
+  margin-bottom: 16rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 8rpx rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 60rpx;
+  height: 480rpx;
+}
+
+.post-img {
+  width: 100%;
+  height: 260rpx;
+  object-fit: cover;
+}
+
+.post-info {
+  padding: 12rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.post-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+  color: #fff;
+}
+
+.post-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20rpx;     /* 往下拉开一点距离 */
+}
+
+.user-avatar {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-bottom: 4rpx;
+}
+
+.user-name {
+  font-size: 22rpx;
+  color: #bbb;
+}
+
+.post-bottom {
+  position: absolute;
+  bottom: 12rpx;
+  left: 12rpx;
+  right: 12rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-meta-left {
+  font-size: 22rpx;
+  color: #bbb;
+}
+
+.post-meta-right {
+  font-size: 22rpx;
+  color: #f44336;
+  text-align: right;
 }

@@ -1,7 +1,7 @@
 /**index.wxss**/
 .page{
   background-color: #F9F2EF;
-  height: 100vh;
+  height: 100%;
 }
 
 .separator {
@@ -101,4 +101,90 @@
   margin: 10vh 5vw;
   font-size: 10vw;
   color: green
+}
+
+/* Post card 样式 */
+.post-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 16rpx;
+}
+
+.post-card {
+  width: 48%;
+  background-color: #271A1A;
+  color: #fff;
+  margin-bottom: 16rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 8rpx rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 60rpx;
+  height: 480rpx;
+}
+
+.post-img {
+  width: 100%;
+  height: 260rpx;
+  object-fit: cover;
+}
+
+.post-info {
+  padding: 12rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.post-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+  color: #fff;
+}
+
+.post-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20rpx;     /* 往下拉开一点距离 */
+}
+
+.user-avatar {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-bottom: 4rpx;
+}
+
+.user-name {
+  font-size: 22rpx;
+  color: #bbb;
+}
+
+.post-bottom {
+  position: absolute;
+  bottom: 12rpx;
+  left: 12rpx;
+  right: 12rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-meta-left {
+  font-size: 22rpx;
+  color: #bbb;
+}
+
+.post-meta-right {
+  font-size: 22rpx;
+  color: #f44336;
+  text-align: right;
 }

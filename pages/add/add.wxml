@@ -1,4 +1,43 @@
 <!--pages/add/add.wxml-->
 <view class="container">
-<text>Sharing & Editing is Up Comming ：)</text>
+  <view class="card">
+    <view class="form-item">
+      <text class="label">📝 Title</text>
+      <input class="input" placeholder="e.g. Handmade Silver Rings" bindinput="onTitleChange" />
+    </view>
+
+    <view class="form-item">
+      <text class="label">📖 Description</text>
+      <textarea class="textarea" placeholder="Describe your post..." bindinput="onDescriptionChange" />
+    </view>
+
+    <view class="form-item">
+      <text class="label">📍 Location</text>
+      <input class="input" placeholder="e.g. Maya Lifestyle, Chiang Mai" bindinput="onLocationChange" />
+    </view>
+
+    <view class="form-item">
+      <text class="label">🖼️ Images</text>
+      <view class="image-list">
+        <block wx:for="{{images}}" wx:key="index">
+          <view class="image-box">
+            <image src="{{item}}" mode="aspectFill" class="preview-img" bindtap="previewImage" data-url="{{item}}" />
+            <view class="delete-icon" bindtap="removeImage" data-index="{{index}}">✖</view>
+          </view>
+        </block>
+        <view class="upload-btn" bindtap="uploadImage">＋</view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="label">🏷️ Tag</text>
+      <picker mode="selector" range="{{tags}}" bindchange="onTagChange">
+        <view class="picker">{{selectedTag || "Select a tag"}}</view>
+      </picker>
+    </view>
+  </view>
+
+  <button class="submit-btn" bindtap="submitPost">🚀 Create Post</button>
 </view>
+
+

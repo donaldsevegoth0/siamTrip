@@ -1,1 +1,27 @@
-/* pages/login/login.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 40rpx;
+  background: #f8f8f8;
+}
+
+.logo {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 40rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 80rpx;
+}
+
+.login-btn {
+  width: 80%;
+  font-size: 30rpx;
+  padding: 20rpx 0;
+}

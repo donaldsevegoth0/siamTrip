@@ -59,6 +59,7 @@ input{
 
 .audioInfo{
   display:flex;
+  margin-top: 5vh;
 }
 
 .label{
@@ -70,4 +71,17 @@ button{
   margin-top: 5vh;
   border-radius: 2vw;
   box-shadow: 10rpx 10rpx 10rpx rgba(167, 157, 157, 0.7)
+}
+.custom-picker {
+  font-size: 20px; /* Makes selected text bigger */
+  color: #333; /* Optional: Darker text */
+  padding: 10rpx 20rpx; /* Adds padding */
+  border: 1px solid #ddd; /* Optional: Border for better visibility */
+  border-radius: 25rpx; /* Rounded corners */
+  background-color: #f8f8f8; /* Light background */
+}
+
+.picker-value {
+  font-size: 22px; /* Increases the displayed text */
+  font-weight: bold; /* Optional: Make it bold */
 }

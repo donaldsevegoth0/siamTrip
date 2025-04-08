@@ -63,34 +63,58 @@ Page({
   onShareAppMessage() {
 
   },
-  onLogin() {
+  handleLogin() {
+    const apiBaseUrl = wx.getStorageSync('apiBaseUrl');
+    
+    // 先调用 wx.getUserProfile 获取用户授权信息
     wx.getUserProfile({
-      desc: '获取用户信息',
-      success: (res) => {
+      desc: '用于登录/注册', // 授权描述
+      success: (profileRes) => {
+        const { avatarUrl, nickName } = profileRes.userInfo;
+  
+        // 用户授权后，调用 wx.login 获取临时登录凭证
         wx.login({
-          success: (loginRes) => {
-            wx.request({
-              url: `${wx.getStorageSync('apiBaseUrl')}/api/login`,
-              method: 'POST',
-              data: {
-                code: loginRes.code,
-                userInfo: res.userInfo
-              },
-              success: (result) => {
-                if (result.data.success) {
-                  wx.setStorageSync('token', result.data.token);
-                  wx.reLaunch({ url: '/pages/home/home' }); // 登录成功，跳转到首页
-                } else {
+          success(res) {
+            if (res.code) {
+              // 调用后端登录接口
+              wx.request({
+                url: `${apiBaseUrl}/api/login`,
+                method: 'POST',
+                data: {
+                  code: res.code, // 获取到的临时登录凭证
+                  avatarUrl,
+                  nickName
+                },
+                success: (res) => {
+                  const { name, avatar, token } = res.data.data;
+                  console.log(name);
+                  wx.setStorageSync('userinfo', { name: name, avatar:avatar, token:token }); // 保存 JWT
+  
+                  // 提示登录成功
+                  wx.showToast({ title: '登录成功' });
+  
+                  // 登录成功后跳转到首页
+                  wx.reLaunch({
+                    url: '/pages/home/home' // 替换为你的首页路径
+                  });
+                },
+                fail: (err) => {
                   wx.showToast({ title: '登录失败', icon: 'none' });
                 }
-              }
-            });
+              });
+            }
+          },
+          fail: (err) => {
+            wx.showToast({ title: '登录失败', icon: 'none' });
           }
         });
       },
-      fail: () => {
+      fail: (err) => {
         wx.showToast({ title: '授权失败', icon: 'none' });
+        console.error('授权失败', err);
       }
     });
   }
+  
+  
 })

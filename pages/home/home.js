@@ -1,18 +1,41 @@
 // pages/index/index.js
+import checkLogin from '../../utils/checkLogin';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    posts:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    
+    wx.request({
+      url: `${wx.getStorageSync('apiBaseUrl')}/api/recommended`,  // 后端的接口地址
+      method: 'GET',
+      success: (res) => {
+        if (res.statusCode === 200) {
+          this.setData({
+            posts: res.data,
+          });
+          console.log(res.data);
+        } else {
+          wx.showToast({
+            title: '加载失败',
+            icon: 'none',
+          });
+        }
+      },
+      fail: () => {
+        wx.showToast({
+          title: '请求失败，请检查网络连接',
+          icon: 'none',
+        });
+      }
+    });
   },
 
   /**
@@ -27,6 +50,8 @@ Page({
    */
   
   onShow() {
+    //if (!checkLogin()) return;
+    // 已登录，正常执行页面逻辑
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ selected: 0 }); // Highlight "Home"
     }
@@ -73,5 +98,22 @@ Page({
     wx.switchTab({
       url: '/pages/talk/talk'
     })
+  },
+  goPost:function(){
+    wx.switchTab({
+      url: '/pages/post/post'
+    })
+  },
+  goToDetail(e) {
+    const postId = e.currentTarget.dataset.id;
+    const post = this.data.posts.find(item => item._id === postId);  // 使用 MongoDB 的 _id
+
+    // 将帖子数据序列化成字符串
+    const postStr = encodeURIComponent(JSON.stringify(post));
+  
+    // 跳转并传参
+    wx.navigateTo({
+      url: `/pages/post/postDetail?post=${postStr}`
+    });
   }
 })

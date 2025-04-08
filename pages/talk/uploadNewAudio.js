@@ -5,10 +5,86 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: "Add new audio"
-
+    title: "Add new audio",
+    categories: ["greetings", "entertainment", "foodshopping", "emergency", "transportation", "hotel"],
+    selectedCategory: "", // Stores selected category
+    types: ["normal", "question", "calculator"], // Checkbox options
+    selectedTypes: [], // Stores selected types
+    chinese:""
   },
 
+  onChineseChange(e){
+    this.setData({chinese:e.detail.value});
+  },
+   // Category Picker Change
+   onCategoryChange(e) {
+    this.setData({ selectedCategory: this.data.categories[e.detail.value] });
+  },
+
+  // Checkbox Selection Change
+  onTypeChange(e) {
+    const selectedValues = e.detail.value; // e.detail.value will be an array of selected values
+    this.setData({
+      selectedTypes: selectedValues // Update the selectedTypes array with the new selections
+    });
+    console.log("Selected Types:", selectedValues); // Debugging
+  },
+  // Form Submit
+  submit(e) {
+    const { chinese, selectedCategory, selectedTypes } = this.data;
+    if (!chinese) {
+      wx.showToast({
+        title: '请填写中文内容',
+        icon: 'none',
+      });
+      return;
+    }
+    // 校验category
+    if (!selectedCategory) {
+      wx.showToast({
+        title: '请填写分类',
+        icon: 'none',
+      });
+      return;
+    }
+
+    // 校验types
+    if (!selectedTypes || selectedTypes.length === 0) {
+      wx.showToast({
+        title: '请填写类型',
+        icon: 'none',
+      });
+      return;
+    }
+    wx.request({
+      url: `${wx.getStorageSync('apiBaseUrl')}/api/addPhrase`, // 替换成你的后端API URL
+      method: 'POST',
+      data: {
+        chinese,
+        category:selectedCategory,
+        types:selectedTypes,
+      },
+      success: (res) => {
+        if (res.data.success) {
+          wx.showToast({
+            title: '添加成功',
+            icon: 'success',
+          });
+        } else {
+          wx.showToast({
+            title: '添加失败',
+            icon: 'none',
+          });
+        }
+      },
+      fail: (err) => {
+        wx.showToast({
+          title: '请求失败，请稍后再试',
+          icon: 'none',
+        });
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

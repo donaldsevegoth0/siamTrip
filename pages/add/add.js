@@ -1,66 +1,80 @@
 // pages/add/add.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    title: '',
+    description: '',
+    location: '',
+    images: [],
+    tags: ['shopping', 'spot', 'food'],
+    selectedTag: '',
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onTitleChange(e) {
+    this.setData({ title: e.detail.value });
+  },
+  onDescriptionChange(e) {
+    this.setData({ description: e.detail.value });
+  },
+  onLocationChange(e) {
+    this.setData({ location: e.detail.value });
+  },
+  onTagChange(e) {
+    const index = e.detail.value;
+    this.setData({ selectedTag: this.data.tags[index] });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  uploadImage() {
+    wx.chooseMedia({
+      count: 9 - this.data.images.length,
+      mediaType: ['image'],
+      sourceType: ['album', 'camera'],
+      success: res => {
+        const newImgs = res.tempFiles.map(file => file.tempFilePath);
+        this.setData({ images: [...this.data.images, ...newImgs] });
+      }
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  previewImage(e) {
+    wx.previewImage({
+      current: e.currentTarget.dataset.url,
+      urls: this.data.images
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  removeImage(e) {
+    const index = e.currentTarget.dataset.index;
+    const images = [...this.data.images];
+    images.splice(index, 1);
+    this.setData({ images });
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
+  submitPost() {
+    const { title, description, location, images, selectedTag } = this.data;
+    if (!title || !description || !location || !selectedTag || images.length === 0) {
+      wx.showToast({ title: 'Please fill in all fields', icon: 'none' });
+      return;
+    }
 
-  },
+    const userinfo = wx.getStorageSync('userinfo');
+    const postData = { title, description, location, image: images, tag: selectedTag };
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+    wx.request({
+      url: 'https://your.api/create-post',
+      method: 'POST',
+      data: postData,
+      header: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + userinfo.token
+      },
+      success: () => {
+        wx.showToast({ title: 'Post created!' });
+        wx.navigateBack();
+      },
+      fail: err => {
+        wx.showToast({ title: 'Failed to post', icon: 'error' });
+        console.error(err);
+      }
+    });
   }
-})
+});

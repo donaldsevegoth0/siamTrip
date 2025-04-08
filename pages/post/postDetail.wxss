@@ -1,0 +1,150 @@
+.post-detail-container {
+  background-color: #F9F2EF;
+  color: #000;
+  height: 100vh;
+  padding-bottom: 100rpx; /* 为底部导航栏留位置 */
+}
+
+/* 顶部栏 */
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20rpx;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.username {
+  font-size: 26rpx;  /* 稍微加大用户名字体 */
+  color: #000;
+  margin-top: 8rpx;
+}
+
+/* 图片轮播 */
+.image-swiper {
+  width: 100%;
+  height: 400rpx;
+}
+
+.swiper-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 内容区域 */
+.post-body {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-title {
+  font-size: 33rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  word-wrap: break-word;  /* 自动换行 */
+}
+
+.post-description {
+  font-size: 30rpx;
+  color: #333;
+  margin-top: 20rpx;
+  line-height: 1.6;
+}
+
+
+/* 地理位置 */
+.post-location {
+  font-size: 25rpx;  /* 地址稍微加大一些 */
+  color: #000;
+  margin-top: 20rpx;
+}
+
+.post-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 100rpx;
+}
+
+.like-location-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+}
+
+.like-btn {
+  font-size: 33rpx;  /* 点赞按钮稍微加大 */
+  color: #f44336;
+  margin-right: 10rpx;  /* 添加一些右边距，避免过于紧凑 */
+}
+
+.share-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 129rpx;
+}
+
+.share-btn-real {
+  background: none;
+  border: none;
+  padding: 0;
+
+  font-size: 33rpx;
+  color: #f44336;
+  text-align: right;
+}
+
+/* 滑动提示区域 */
+.slide-section {
+  margin: 200rpx 20rpx;
+  padding: 40rpx;
+  background-color: #3a2a2a;
+  border-radius: 16rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #ccc;
+}
+
+/* 底部导航栏 */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background-color: #1b1b1b;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+}
+
+.bottom-nav image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.add-btn {
+  width: 70rpx;
+  height: 70rpx;
+}

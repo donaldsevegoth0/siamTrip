@@ -1,4 +1,46 @@
-<!--pages/post/post.wxml-->
-<view class="container">
-<text>Post Area is under construction !</text>
+<view style="position: relative;">
+  <!-- Navigation Bar -->
+  <view class="nav-bar {{isSearchBarVisible ? 'hidden' : ''}}">
+    <view class="category">
+      <block wx:for="{{categories}}" wx:key="index">
+        <view class="nav-item" bindtap="changeCategory" data-category="{{item}}">
+          {{item}}
+        </view>
+      </block>
+    </view>
+    <view class="search-btn" bindtap="showSearchBar">
+      <image src="/static/image/search-icon.png" />
+    </view>
+  </view>
+
+  <!-- 搜索框 -->
+  <view class="search-bar {{searchBarClass}}" wx:if="{{isSearchBarVisible}}">
+    <input class="search-input" placeholder="搜索帖子" bindinput="onSearchInput" />
+    <text class="close-btn" bindtap="hideSearchBar">✖</text>
+  </view>
+
+  <!-- Post Cards -->
+  <view class="post-grid">
+    <block wx:for="{{filteredPosts}}" wx:key="_id">
+      <view class="post-card" bindtap="goToDetail" data-id="{{item._id}}">
+        <image class="post-img" src="{{item.images[0]}}" mode="aspectFill" />
+
+        <view class="post-info">
+          <view class="post-title">{{item.title}}</view>
+          <!-- 用户头像 + 名称：中间 -->
+          <view class="post-user">
+            <image class="user-avatar" src="{{item.avatar}}" />
+            <text class="user-name">{{item.username}}</text>
+          </view>
+          <view class="post-bottom">
+            <!-- 地理位置：左下 -->
+            <view class="post-meta-left">📍{{item.location}}</view>
+            <!-- 点赞数：右下 -->
+            <view class="post-meta-right">❤️ {{item.likes}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
 </view>
+<custom-tab-bar></custom-tab-bar>

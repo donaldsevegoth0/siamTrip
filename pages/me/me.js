@@ -1,66 +1,19 @@
 // pages/me/me.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    activeTab: 'POSTS',
+    avatarUrl: "",  // 替换成动态的头像
+    nickName: "",  // 替换成动态的昵称
+    cards: [
+      { content: 'Card content 1' },
+      { content: 'Card content 2' },
+      { content: 'Card content 3' }
+    ]
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  onLoad(){
+    this.setData({
+      avatarUrl:wx.getStorageSync('userinfo').avatar,
+      name: wx.getStorageSync('userinfo').name
+    });
   }
-})
+});
