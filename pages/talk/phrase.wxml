@@ -1,5 +1,5 @@
 <!--pages/talk/phrase.wxml-->
-<scroll-view scroll-y="">
+<scroll-view scroll-y="true">
 <view class="phrase">
   <view class="meaning">{{phrase.English}}</view>
   <view class="container">
@@ -27,7 +27,6 @@
 
   <view class="row">
     <button bindtap="clear">C</button>
-    <button bindtap="inputValue" data-value=".">.</button>
   </view>
   <view class="row">
     <button bindtap="inputValue" data-value="7">7</button>

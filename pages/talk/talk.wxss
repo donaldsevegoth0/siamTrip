@@ -1,14 +1,9 @@
 /* pages/talk/talk.wxss */
-.talk{
-  background-color: #F9F2EF;
-}
 
 .title{
   text-align: center;
   padding: 3vh 0vh;
 }
-
-
 
 .separator {
   border-top: 2px solid black;  /* 上边框作为分隔线 */

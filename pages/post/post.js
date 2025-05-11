@@ -1,5 +1,6 @@
 // pages/post/post.js
 Page({
+  enablePullDownRefresh: true,
   data: {
     categories: ['All', 'Spot', 'Shopping', 'Food'],
     selectedCategory: 'All',  // 默认分类
@@ -11,16 +12,32 @@ Page({
   },
 
   onLoad() {
+    this.fetchData();
+  },
+  onShow(){
+    this.fetchData();
+  },
+  fetchData(){
+    const query = wx.getStorageSync('query');
+    console.log(query);
+    if(query){
+      this.searchPosts(query);
+    }
     // 初始化时获取所有帖子数据
     wx.request({
       url: `${wx.getStorageSync('apiBaseUrl')}/api/posts`,  // 后端的接口地址
       method: 'GET',
       success: (res) => {
         if (res.statusCode === 200) {
+          if(!this.data.filteredPosts==[]){
           this.setData({
             posts: res.data,
             filteredPosts: res.data  // 默认显示所有帖子
-          });
+          });}else{
+            this.setData({
+              posts: res.data
+            });
+          }
         } else {
           wx.showToast({
             title: '加载失败',
@@ -51,7 +68,11 @@ Page({
     if (category === 'All') {
       return this.data.posts; // 显示全部
     }
-    return this.data.posts.filter(post => post.tag.toLowerCase() === category.toLowerCase());
+    
+    // 假设 tag 是一个数组，检查该数组中是否包含该类别
+    return this.data.posts.filter(post => 
+      post.tag.some(tag => tag.toLowerCase() === category.toLowerCase())
+    );
   },
   
 
@@ -90,8 +111,8 @@ Page({
     const query = e.detail.value;
     this.setData({
       searchQuery: query,
-      filteredPosts: this.searchPosts(query)
     });
+    this.searchPosts(this.data.searchQuery);
   },
 
   // 搜索函数：根据标题和位置进行搜索
@@ -99,9 +120,33 @@ Page({
     if (!query) {
       return this.data.posts;  // 如果没有输入，显示所有帖子
     }
-    return this.data.posts.filter(post =>
-      post.title.includes(query) || post.location.includes(query)
-    );
+    // 从后端获取匹配的帖子
+  wx.request({
+    url: `${wx.getStorageSync('apiBaseUrl')}/api/searchPosts`,  // 后端搜索接口
+    method: 'GET',
+    data: {
+      query: query  // 查询字符串
+    },
+    success: (res) => {
+      if (res.statusCode === 200) {
+        wx.setStorageSync('query', "");
+        this.setData({
+          filteredPosts: res.data.posts, // 更新页面上的帖子
+        });
+      } else {
+        wx.showToast({
+          title: '搜索失败',
+          icon: 'none'
+        });
+      }
+    },
+    fail: () => {
+      wx.showToast({
+        title: '网络错误',
+        icon: 'none'
+      });
+    }
+  });
   },
 
   goToDetail(e) {
@@ -115,5 +160,8 @@ Page({
     wx.navigateTo({
       url: `/pages/post/postDetail?post=${postStr}`
     });
-  }
+  },
+  onPullDownRefresh() {
+    this.onLoad();
+  },
 });

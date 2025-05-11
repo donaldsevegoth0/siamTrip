@@ -86,9 +86,10 @@ Page({
                   nickName
                 },
                 success: (res) => {
-                  const { name, avatar, token } = res.data.data;
-                  console.log(name);
-                  wx.setStorageSync('userinfo', { name: name, avatar:avatar, token:token }); // 保存 JWT
+                  console.log(res.data);
+                  const { id, name, avatar, token } = res.data;
+                  console.log(id);
+                  wx.setStorageSync('userinfo', { _id: id, name: name, avatar:avatar, token:token }); // 保存 JWT
   
                   // 提示登录成功
                   wx.showToast({ title: '登录成功' });

@@ -49,32 +49,56 @@ Page({
     this.setData({ images });
   },
 
+  // 提交帖子
   submitPost() {
     const { title, description, location, images, selectedTag } = this.data;
-    if (!title || !description || !location || !selectedTag || images.length === 0) {
-      wx.showToast({ title: 'Please fill in all fields', icon: 'none' });
+    
+    if (!title || !description || !location || images.length === 0 || !selectedTag) {
+      wx.showToast({
+        title: 'Please fill in all fields!',
+        icon: 'none',
+      });
       return;
     }
 
-    const userinfo = wx.getStorageSync('userinfo');
-    const postData = { title, description, location, image: images, tag: selectedTag };
+    // 假设用户 ID 保存在 storage 中
+    const createdBy = wx.getStorageSync('userinfo')._id;
 
+    // 发送数据到后端
     wx.request({
-      url: 'https://your.api/create-post',
+      url: `${wx.getStorageSync('apiBaseUrl')}/api/postNewPlan`,  // 后端接口
       method: 'POST',
-      data: postData,
-      header: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + userinfo.token
+      data: {
+        title,
+        describe: description,
+        location,
+        images,
+        tag: [selectedTag],  // 标签是数组
+        createdBy,
       },
-      success: () => {
-        wx.showToast({ title: 'Post created!' });
-        wx.navigateBack();
+      success: (res) => {
+        if (res.statusCode === 200) {
+          wx.showToast({
+            title: 'Post created successfully!',
+            icon: 'success',
+          });
+          // 跳转到帖子详情页或其他页面
+          wx.redirectTo({
+            url: '/pages/post/post'
+          });          
+        } else {
+          wx.showToast({
+            title: 'Failed to create post',
+            icon: 'none',
+          });
+        }
       },
-      fail: err => {
-        wx.showToast({ title: 'Failed to post', icon: 'error' });
-        console.error(err);
-      }
+      fail: () => {
+        wx.showToast({
+          title: 'Network error',
+          icon: 'none',
+        });
+      },
     });
-  }
+  },
 });

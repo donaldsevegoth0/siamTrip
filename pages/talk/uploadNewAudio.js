@@ -48,14 +48,6 @@ Page({
       return;
     }
 
-    // 校验types
-    if (!selectedTypes || selectedTypes.length === 0) {
-      wx.showToast({
-        title: '请填写类型',
-        icon: 'none',
-      });
-      return;
-    }
     wx.request({
       url: `${wx.getStorageSync('apiBaseUrl')}/api/addPhrase`, // 替换成你的后端API URL
       method: 'POST',
@@ -69,7 +61,17 @@ Page({
           wx.showToast({
             title: '添加成功',
             icon: 'success',
+            duration: 1000,
           });
+          // Delay to let toast finish before navigating back
+          setTimeout(() => {
+            const pages = getCurrentPages();
+            const prevPage = pages[pages.length - 2]; // Get the previous page
+            if (prevPage && typeof prevPage.onLoad === 'function') {
+              prevPage.onLoad(); // Reload data on previous page
+            }
+            wx.navigateBack({ delta: 1 });
+            }, 1000);
         } else {
           wx.showToast({
             title: '添加失败',

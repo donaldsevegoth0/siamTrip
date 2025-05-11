@@ -9,7 +9,7 @@
       </block>
     </view>
     <view class="search-btn" bindtap="showSearchBar">
-      <image src="/static/image/search-icon.png" />
+      <image src="/UI/post/search-icon.png" />
     </view>
   </view>
 
@@ -43,4 +43,3 @@
     </block>
   </view>
 </view>
-<custom-tab-bar></custom-tab-bar>

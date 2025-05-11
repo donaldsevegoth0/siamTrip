@@ -1,61 +1,97 @@
 <view class="post-detail-container">
 
-<!-- 用户信息居中 -->
-<view class="post-header">
-  <view class="user-info">
-    <image class="avatar" src="{{post.avatar}}" />
-    <text class="username">{{post.username}}</text>
-  </view>
-</view>
-
 <!-- 图片轮播 -->
-<view wx:if="{{post.images && post.images.length}}">
+<view wx:if="{{post.images && post.images.length && !isEditing}}">
   <swiper class="image-swiper" indicator-dots autoplay circular>
     <block wx:for="{{post.images}}" wx:key="index">
       <swiper-item>
         <image src="{{item}}" class="swiper-image" mode="aspectFill" />
+        
       </swiper-item>
     </block>
   </swiper>
 </view>
-
 <view wx:else>
-  <text>暂无图片展示</text>
+  <text>No Pictures</text>
 </view>
 
-
-<!-- 内容：标题、位置、简短描述、点赞、分享 -->
+<!-- 内容：标题、位置、简短描述 -->
 <view class="post-body">
   <view class="post-left">
-    <view class="post-title">{{post.title}}</view>
-    <view class="post-description">{{post.describe}}</view>
-    <view class="post-location">📍{{post.location}}</view>
-    
+    <view class="post-title">
+      <input wx:if="{{isEditing}}" value="{{editedTitle}}" bindinput="onTitleInput" class="editable-input" />
+      <text wx:else>{{post.title}}</text>
+    </view>
+    <view class="post-description">
+      <textarea
+        user-select="true"
+        wx:if="{{isEditing}}"
+        value="{{editedDescription}}"
+        bindinput="onDescriptionInput"
+        class="editable-textarea"
+        maxlength="-1"
+      />
+      <text user-select="true" wx:else>{{post.describe}}</text>
+    </view>
+    <view class="post-location">
+      <input wx:if="{{isEditing}}" value="{{editedLocation}}" bindinput="onLocationInput" class="editable-input" />
+      <text user-select="true" wx:else>📍{{post.location}}</text>
+    </view>
   </view>
 </view>
 
-<!-- 点赞分享单独一块 -->
+<!-- 图片上传和删除 -->
+<view wx:if="{{isEditing}}">
+  <!-- 上传按钮 -->
+  <view class="image-upload-container">
+    <button class="upload-btn" bindtap="handleImageUpload">➕ 上传新图片</button>
+  </view>
+
+  <!-- 横向滚动图片列表 -->
+  <scroll-view class="image-scroll-row" scroll-x="true" enable-flex="true">
+    <view class="image-row">
+      <block wx:for="{{imageList}}" wx:key="index">
+        <view class="image-item">
+          <image src="{{item}}" mode="aspectFill" class="image-preview" />
+          <view class="delete-img-btn" data-index="{{index}}" bindtap="handleImageDelete">✖️</view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+</view>
+
+
+
+<!-- 点赞分享收藏 -->
 <view class="like-location-container">
   <button class="like-btn" bindtap="handleLike" hover-class="none">❤️ {{post.likes}}</button>
+  <view class="favorite-container">
+    <button class="favorite-btn" bindtap="handleFavorite" hover-class="none">
+      ⭐ {{favoritedCount || 0}}
+    </button>
+  </view>
   <view class="share-container">
-    <button open-type="share" class="share-btn-real">🔄 分享</button>
+    <button open-type="share" class="share-btn-real">🔄 Share</button>
   </view>
 </view>
 
+<!-- 编辑操作按钮 -->
+<view class="action-buttons">
+  <block wx:if="{{isEditing}}">
+    <button class="save-btn" bindtap="handleSave">💾 Save</button>
+    <button class="cancel-btn" bindtap="handleCancelEdit">🚫 Cancel
+    </button>
+  </block>
+  <button wx:else class="update-btn" bindtap="handleUpdate">✍️ Edit</button>
+  <button wx:if="{{!isEditing}}" class="delete-btn" data-postid="{{post._id}}" bindtap="handleDelete">❌ Delete</button>
+
+</view>
 
 <!-- 滑动查看计划 -->
 <view class="slide-section">
   <text>👀 滑动查看更多计划（敬请期待）</text>
 </view>
 
-<!-- 底部导航栏 -->
-<view class="bottom-nav">
-  <image src="/static/image/home.png" />
-  <image src="/static/image/post-active.png" />
-  <image src="/static/image/assist.png" />
-  <image src="/static/image/add.png" class="add-btn" />
-  <image src="/static/image/me.png" />
-</view>
+<custom-tab-bar></custom-tab-bar>
 
 </view>
-<custom-tab-bar></custom-tab-bar>

@@ -8,23 +8,41 @@
   <!-- block部分 -->
   <view class="posts-block">
     <view class="posts-header">
-      <text class="header-item active">MY POSTS</text>
+  <text 
+    class="header-item {{activeTab === 'posts' ? 'active' : ''}}" 
+    bindtap="switchToPosts">POSTS</text>
+  <text 
+    class="header-item {{activeTab === 'collect' ? 'active' : ''}}" 
+    bindtap="switchToCollect">COLLECTS</text>
     </view>
+    <view wx:if="{{posts.length > 0}}">
+    <view class="post-grid">
+    <block wx:for="{{posts}}" wx:key="_id">
+      <view class="post-card" bindtap="goToDetail" data-id="{{item._id}}">
+        <image class="post-img" src="{{item.images[0]}}" mode="aspectFill" />
 
-    <!-- 卡片部分 -->
-    <view class="cards-container">
-      <view class="card">
-        <view class="card-content">Card 1</view>
+        <view class="post-info">
+          <view class="post-title">{{item.title}}</view>
+          <!-- 用户头像 + 名称：中间 -->
+          <view class="post-user">
+            <image class="user-avatar" src="{{item.avatar}}" />
+            <text class="user-name">{{item.username}}</text>
+          </view>
+          <view class="post-bottom">
+            <!-- 地理位置：左下 -->
+            <view class="post-meta-left">📍{{item.location}}</view>
+            <!-- 点赞数：右下 -->
+            <view class="post-meta-right">❤️ {{item.likes}}</view>
+          </view>
+        </view>
       </view>
-      <view class="card">
-        <view class="card-content">Card 2</view>
-      </view>
-      <view class="card">
-        <view class="card-content">Card 3</view>
-      </view>
-      <view class="card">
-        <view class="card-content">Card 4</view>
-      </view>
+    </block>
+    </view>
+  
+  
+    </view>
+    <view wx:else>
+      <view class="noData">No Post So Far</view>
     </view>
   </view>
 </view>

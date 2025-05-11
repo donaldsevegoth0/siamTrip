@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    posts:[]
+    posts:[],
+    searchQuery: ''
   },
 
   /**
@@ -50,11 +51,12 @@ Page({
    */
   
   onShow() {
-    //if (!checkLogin()) return;
+    if (!checkLogin()) return;
     // 已登录，正常执行页面逻辑
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ selected: 0 }); // Highlight "Home"
     }
+    this.fetchPostDetails;
   },
   
   
@@ -115,5 +117,17 @@ Page({
     wx.navigateTo({
       url: `/pages/post/postDetail?post=${postStr}`
     });
+  },
+  onInput(e){
+    const query = e.detail.value;
+    this.setData({
+      searchQuery: query,
+    });
+    wx.setStorageSync('query', this.data.searchQuery);
+  },
+  onSearch(){
+    wx.switchTab({
+      url: "../post/post",
+    })
   }
 })
