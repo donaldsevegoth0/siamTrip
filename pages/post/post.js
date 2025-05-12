@@ -1,4 +1,5 @@
 // pages/post/post.js
+import checkLogin from '../../utils/checkLogin';
 Page({
   enablePullDownRefresh: true,
   data: {
@@ -15,6 +16,7 @@ Page({
     this.fetchData();
   },
   onShow(){
+    if (!checkLogin()) return;
     this.fetchData();
   },
   fetchData(){

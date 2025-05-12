@@ -1,4 +1,5 @@
 // pages/phrases/phrases.js
+import checkLogin from '../../utils/checkLogin';
 Page({
 
   /**
@@ -33,6 +34,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    if (!checkLogin()) return;
     const selected = wx.getStorageSync("selectedTab") || 0;
     const tabbar = this.selectComponent("#custom-tabbar"); // 获取 tabbar 组件
     if (tabbar) {

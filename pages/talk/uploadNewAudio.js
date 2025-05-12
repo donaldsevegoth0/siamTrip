@@ -74,7 +74,7 @@ Page({
             }, 1000);
         } else {
           wx.showToast({
-            title: '添加失败',
+            title: '添加失败,请检查是否重复',
             icon: 'none',
           });
         }

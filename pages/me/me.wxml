@@ -42,7 +42,12 @@
   
     </view>
     <view wx:else>
-      <view class="noData">No Post So Far</view>
+      <view wx:if="{{activeTab === 'collect'}}">
+        <view class="noData">No Collects So Far</view>
+      </view>
+      <view wx:else>
+        <view class="noData">No Post So Far</view>
+      </view>
     </view>
   </view>
 </view>

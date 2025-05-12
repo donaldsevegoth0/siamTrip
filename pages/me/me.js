@@ -1,4 +1,5 @@
 // pages/me/me.js
+import checkLogin from '../../utils/checkLogin';
 Page({
   data: {
     avatarUrl: "",  // 替换成动态的头像
@@ -16,6 +17,7 @@ Page({
   },
 
   onShow(){
+    if (!checkLogin()) return;
     console.log('onShow triggered'); // for debug
     this.fetchUserCollectedPosts();
     this.fetchUserPosts()

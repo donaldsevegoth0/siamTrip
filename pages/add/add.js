@@ -79,7 +79,7 @@ Page({
       success: (res) => {
         if (res.statusCode === 200) {
           wx.showToast({
-            title: 'Post created successfully!',
+            title: 'Post created',
             icon: 'success',
           });
           // 跳转到帖子详情页或其他页面

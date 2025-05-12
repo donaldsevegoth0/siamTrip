@@ -5,10 +5,10 @@
     "pages/post/postDetail",
     "pages/add/add",
     "pages/talk/talk",
-    "pages/me/me",
     "pages/talk/phrases",
     "pages/talk/phrase",
     "pages/talk/uploadNewAudio",
+    "pages/me/me",
     "pages/login/login"
   ],
   "tabBar": {

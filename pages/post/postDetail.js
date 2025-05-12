@@ -1,3 +1,4 @@
+import checkLogin from '../../utils/checkLogin';
 Page({
   data: {
     post: null,
@@ -25,6 +26,10 @@ Page({
     if (!this.data.hasViewed) {
       this.incrementViewCount(this.data.post._id);
     }
+  },
+
+  onShow(){
+    if (!checkLogin()) return;
   },
 
   incrementViewCount(postId) {
@@ -80,12 +85,8 @@ Page({
         });
 
         wx.showToast({
-          title: updated.favoritedBy ? '收藏成功 ⭐' : '取消收藏',
+          title: updated.favoritedBy.includes(userId) ? '收藏成功 ⭐' : '取消收藏',
           icon: 'success'
-        });
-        
-        wx.navigateBack({
-          delta: 1 // Go back one page
         });
       }
     });
